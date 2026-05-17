@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>De Mil Amores | Detalles Rossy - Flores y Peluches</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9F6F0;
+            color: #2C2A29;
+            scroll-behavior: smooth;
+        }
+
+        /* PALETA VERDE ELEGANTE */
+        :root {
+            --green-deep: #2A5C4A;
+            --green-moss: #417B5E;
+            --gold-accent: #C6A15B;
+            --gold-soft: #D9B87A;
+            --sand-light: #F0EBE1;
+            --cream-pure: #FEFCF8;
+            --charcoal-soft: #3B3A38;
+            --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.03), 0 2px 5px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        /* BANNER PRINCIPAL */
+        .banner-container {
+            width: 100%;
+            background: #FDF9F2;
+        }
+        .main-banner {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 480px;
+        }
+        @media (max-width: 768px) {
+            .main-banner {
+                max-height: 320px;
+                object-fit: cover;
+            }
+        }
+
+        /* Encabezado sutil */
+        .hero-subtle {
+            background: linear-gradient(112deg, #FDF9F2 0%, #F4EDE2 100%);
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #E8DFD3;
+        }
+
+        .logo-mini {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--green-deep);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .logo-mini i {
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+        }
+
+        .subtle-tagline {
+            font-size: 0.8rem;
+            color: #6F6A5E;
+            margin-top: 0.3rem;
+        }
+
+        /* Botones de categoría */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 2rem 1rem 1.8rem 1rem;
+        }
+
+        .cat-btn {
+            background: white;
+            border: 1px solid #DCCFBF;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #5B5447;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cat-btn i {
+            margin-right: 0.5rem;
+            color: var(--gold-accent);
+        }
+
+        .cat-btn.active {
+            background: var(--green-deep);
+            border-color: var(--green-deep);
+            color: white;
+        }
+
+        .cat-btn.active i {
+            color: white;
+        }
+
+        .cat-btn:hover:not(.active) {
+            background: #F6F0E8;
+            border-color: #CBBFAE;
+        }
+
+        /* Catálogo grilla */
+        .catalog {
+            max-width: 1300px;
+            margin: 1rem auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* TARJETAS REDISEÑADAS: Imagen más rectangular + franja de contenido delgada */
+        .card {
+            background: var(--cream-pure);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            border: 1px solid #EBE3D8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #DFD2C2;
+        }
+
+        /* IMAGEN MÁS RECTANGULAR: altura aumentada y formato panorámico */
+        .card-img {
+            height: 320px;          /* Más alta y rectangular */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+
+        /* Badque de emoji */
+        .emoji-badge {
+            background: rgba(255, 252, 245, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 30px;
+            padding: 0.25rem 1rem;
+            margin: 14px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--green-deep);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 0.5px solid #D4C5B4;
+        }
+
+        /* FRANJA DE CONTENIDO MÁS DELGADA: menos padding y compacto */
+        .card-content {
+            padding: 0.85rem 1rem 1rem 1rem;
+            border-top: 1px solid #F0E8DF;
+            background: white;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: #2D3A2F;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.75rem;
+            color: #7C7669;
+            margin: 0.3rem 0 0.5rem 0;
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--green-deep);
+            margin-top: 0.25rem;
+            display: inline-block;
+            background: #F4EFE7;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            letter-spacing: -0.2px;
+        }
+
+        /* Footer */
+        footer {
+            background: #E9E1D6;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            font-size: 0.8rem;
+            color: #5C5547;
+        }
+
+        .heart-icon {
+            color: #b17f4b;
+            display: inline-block;
+            animation: gentlePulse 1.6s infinite;
+        }
+
+        @keyframes gentlePulse {
+            0% { transform: scale(1);}
+            50% { transform: scale(1.08);}
+            100% { transform: scale(1);}
+        }
+
+        /* Toast notificación */
+        .toast-msg {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.95);
+            background: #2C3E2Bdd;
+            backdrop-filter: blur(10px);
+            color: #FEF6E6;
+            padding: 0.7rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: 'Inter', monospace;
+            border: 1px solid #CBAA7A;
+        }
+
+        .toast-msg.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        /* Responsive: en móviles la imagen se ajusta pero sigue siendo rectangular */
+        @media (max-width: 640px) {
+            .grid {
+                gap: 1.2rem;
+            }
+            .card-img {
+                height: 260px;      /* Más rectangular en móvil también */
+            }
+            .toast-msg {
+                white-space: normal;
+                text-align: center;
+                max-width: 85%;
+                font-size: 0.75rem;
+            }
+            .categories {
+                gap: 0.6rem;
+            }
+            .cat-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.75rem;
+            }
+            .card-content {
+                padding: 0.7rem 0.9rem 0.9rem 0.9rem;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+            .price {
+                font-size: 1rem;
+                padding: 0.15rem 0.7rem;
+            }
+        }
+
+        /* Para pantallas muy grandes, mantener proporción */
+        @media (min-width: 1400px) {
+            .card-img {
+                height: 360px;
+            }
+        }
+
+        .floral-bg {
+            background-image: radial-gradient(#DCCFBF 0.8px, transparent 0.8px);
+            background-size: 22px 22px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- BANNER PRINCIPAL -->
+<div class="banner-container">
+    <img class="main-banner" src="img/banner.png" alt="Detalles Rossy - Te Amo Mamá" loading="eager">
+</div>
+
+<!-- Filtros -->
+<div class="categories">
+    <button class="cat-btn active" data-filter="all"><i class="fas fa-seedling"></i> Todos</button>
+    <button class="cat-btn" data-filter="flower"><i class="fas fa-flower"></i> Ramos de Flores</button>
+    <button class="cat-btn" data-filter="plush"><i class="fas fa-bear"></i> Peluches</button>
+    <button class="cat-btn" data-filter="combo"><i class="fas fa-gift"></i> Combos Especiales</button>
+</div>
+
+<!-- Catálogo dinámico -->
+<section class="catalog">
+    <div class="grid" id="catalog-grid"></div>
+</section>
+
+<footer>
+    <p>Con <span class="heart-icon">🌿</span> dedicación y calidez • Detalles Rossy para Trinidad</p>
+    <p style="margin-top: 0.5rem; font-size: 0.7rem;">Flores de limpia pipa & peluches suaves | Entrega con amor</p>
+</footer>
+
+<div id="toastMsg" class="toast-msg">✨ agregado con cariño a tu lista de deseos ✨</div>
+
+<script>
+    // Catálogo de productos (con imágenes locales)
+    const products = [
+        // Peluches
+        { id: 1, name: "Ternura", desc: "Peluche Tierno que conquista de 15cm, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche1.png", emoji: "🧸" },
+        { id: 2, name: "Rosa", desc: "Peluche rosa suave, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche2.png", emoji: "🧸" },
+        { id: 3, name: "Osito", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche3.png", emoji: "🧸" },
+        { id: 4, name: "Osito Miel", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche4.png", emoji: "🧸" },
+        { id: 5, name: "Perrito Nube", desc: "Peluche suave, con flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche5.png", emoji: "🐑" },
+        { id: 6, name: "Osito Corazón", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche6.png", emoji: "🧸" },
+        // Combos especiales
+        { id: 7, name: "Lobito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche7.png", emoji: "🎁" },
+        { id: 8, name: "Lotso", desc: "Flor de pipa lotso el oso", price: "Bs. 35", category: "flower", img: "img/peluche8.png", emoji: "🍫" },
+        { id: 9, name: "Poo", desc: "Flor de pipa osito poo", price: "Bs. 35", category: "flower", img: "img/peluche9.png", emoji: "🦄" },
+        // Adicional: algunas flores (para completar categoría)
+        { id: 10, name: "Puerquito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche10.png", emoji: "🌹" },
+        { id: 11, name: "Panda", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche11.png", emoji: "🌹" }
+    ];
+
+    const gridContainer = document.getElementById('catalog-grid');
+    let activeFilter = 'all';
+
+    function renderCatalog(filter = 'all') {
+        let filtered = filter === 'all' ? [...products] : products.filter(p => p.category === filter);
+
+        if (filtered.length === 0) {
+            gridContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2.5rem; background:#F4EFE7; border-radius:2rem;"><i class="fas fa-heart-broken" style="font-size:2.2rem; color:#B28B60;"></i><p style="margin-top:1rem;">Muy pronto nuevos regalos llenos de ternura 💚</p></div>`;
+            return;
+        }
+
+        let html = '';
+        for (let product of filtered) {
+            html += `
+                <div class="card" data-id="${product.id}">
+                    <div class="card-img" style="background-image: url('${product.img}'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${product.name} - ${product.price}</div>
+                        <div class="card-desc">${product.desc}</div>
+                    </div>
+                </div>
+            `;
+        }
+        gridContainer.innerHTML = html;
+    }
+
+    // Filtros
+    const filterBtns = document.querySelectorAll('.cat-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filterValue = btn.getAttribute('data-filter');
+            activeFilter = filterValue;
+            filterBtns.forEach(bt => bt.classList.remove('active'));
+            btn.classList.add('active');
+            renderCatalog(activeFilter);
+        });
+    });
+
+    // Inicializar
+    renderCatalog('all');
+
+    // Animación escalonada de tarjetas
+    const styleAnim = document.createElement('style');
+    styleAnim.textContent = `
+        .card {
+            animation: softRise 0.4s ease-out backwards;
+            animation-delay: calc(0.02s * var(--order, 0));
+        }
+        @keyframes softRise {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    `;
+    document.head.appendChild(styleAnim);
+    
+    function applyCardDelay() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, idx) => card.style.setProperty('--order', idx));
+    }
+    
+    const observer = new MutationObserver(() => applyCardDelay());
+    observer.observe(gridContainer, { childList: true, subtree: false });
+    applyCardDelay();
+
+    console.log("%c🌿 De Mil Amores · Tarjetas rediseñadas: imagen rectangular y contenido compacto 🌿", "color: #2A5C4A; font-size: 13px; font-weight: bold;");
+</script>
+</body>
+</html>
