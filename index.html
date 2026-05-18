@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>De Mil Amores | Detalles Rossy - Flores y Peluches</title>
+    <title>Detalles Rossy - Flores y Peluches</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
@@ -51,36 +51,6 @@
                 max-height: 320px;
                 object-fit: cover;
             }
-        }
-
-        /* Encabezado sutil */
-        .hero-subtle {
-            background: linear-gradient(112deg, #FDF9F2 0%, #F4EDE2 100%);
-            padding: 1rem 1.5rem 1.5rem 1.5rem;
-            text-align: center;
-            border-bottom: 1px solid #E8DFD3;
-        }
-
-        .logo-mini {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--green-deep);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        .logo-mini i {
-            font-size: 1.2rem;
-            color: var(--gold-accent);
-        }
-
-        .subtle-tagline {
-            font-size: 0.8rem;
-            color: #6F6A5E;
-            margin-top: 0.3rem;
         }
 
         /* Botones de categoría */
@@ -138,7 +108,7 @@
             gap: 2rem;
         }
 
-        /* TARJETAS REDISEÑADAS: Imagen más rectangular + franja de contenido delgada */
+        /* TARJETAS */
         .card {
             background: var(--cream-pure);
             border-radius: 1rem;
@@ -156,9 +126,9 @@
             border-color: #DFD2C2;
         }
 
-        /* IMAGEN MÁS RECTANGULAR: altura aumentada y formato panorámico */
+        /* IMAGEN - clickeable */
         .card-img {
-            height: 320px;          /* Más alta y rectangular */
+            height: 320px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -166,25 +136,38 @@
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
         }
 
-        /* Badque de emoji */
-        .emoji-badge {
-            background: rgba(255, 252, 245, 0.92);
-            backdrop-filter: blur(4px);
-            border-radius: 30px;
-            padding: 0.25rem 1rem;
-            margin: 14px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--green-deep);
-            display: inline-flex;
+        .card-img:hover {
+            opacity: 0.92;
+        }
+
+        /* Indicador visual de que la imagen es clickeable */
+        .card-img::after {
+            content: "🔍";
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
             align-items: center;
-            gap: 6px;
-            border: 0.5px solid #D4C5B4;
+            justify-content: center;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
         }
 
-        /* FRANJA DE CONTENIDO MÁS DELGADA: menos padding y compacto */
+        .card-img:hover::after {
+            opacity: 1;
+        }
+
         .card-content {
             padding: 0.85rem 1rem 1rem 1rem;
             border-top: 1px solid #F0E8DF;
@@ -223,6 +206,87 @@
             letter-spacing: -0.2px;
         }
 
+        /* LIGHTBOX / MODAL para previsualizar imagen */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+            animation: zoomIn 0.25s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            color: #C6A15B;
+            transform: scale(1.1);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.6);
+            padding: 10px;
+            margin: 0 auto;
+            width: fit-content;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+
         /* Footer */
         footer {
             background: #E9E1D6;
@@ -247,7 +311,7 @@
             100% { transform: scale(1);}
         }
 
-        /* Toast notificación */
+        /* Toast */
         .toast-msg {
             position: fixed;
             bottom: 25px;
@@ -274,13 +338,12 @@
             transform: translateX(-50%) scale(1);
         }
 
-        /* Responsive: en móviles la imagen se ajusta pero sigue siendo rectangular */
         @media (max-width: 640px) {
             .grid {
                 gap: 1.2rem;
             }
             .card-img {
-                height: 260px;      /* Más rectangular en móvil también */
+                height: 260px;
             }
             .toast-msg {
                 white-space: normal;
@@ -305,9 +368,19 @@
                 font-size: 1rem;
                 padding: 0.15rem 0.7rem;
             }
+            .lightbox-close {
+                top: 10px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+            .lightbox-caption {
+                font-size: 0.8rem;
+                bottom: 15px;
+            }
         }
 
-        /* Para pantallas muy grandes, mantener proporción */
         @media (min-width: 1400px) {
             .card-img {
                 height: 360px;
@@ -347,27 +420,73 @@
 
 <div id="toastMsg" class="toast-msg">✨ agregado con cariño a tu lista de deseos ✨</div>
 
+<!-- LIGHTBOX MODAL para previsualización de imágenes -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" class="lightbox-img" alt="Vista ampliada">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+</div>
+
 <script>
-    // Catálogo de productos (con imágenes locales)
+    // Catálogo de productos
     const products = [
-        // Peluches
-        { id: 1, name: "Ternura", desc: "Peluche Tierno que conquista de 15cm, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche1.png", emoji: "🧸" },
-        { id: 2, name: "Rosa", desc: "Peluche rosa suave, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche2.png", emoji: "🧸" },
-        { id: 3, name: "Osito", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche3.png", emoji: "🧸" },
-        { id: 4, name: "Osito Miel", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche4.png", emoji: "🧸" },
-        { id: 5, name: "Perrito Nube", desc: "Peluche suave, con flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche5.png", emoji: "🐑" },
-        { id: 6, name: "Osito Corazón", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche6.png", emoji: "🧸" },
-        // Combos especiales
-        { id: 7, name: "Lobito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche7.png", emoji: "🎁" },
-        { id: 8, name: "Lotso", desc: "Flor de pipa lotso el oso", price: "Bs. 35", category: "flower", img: "img/peluche8.png", emoji: "🍫" },
-        { id: 9, name: "Poo", desc: "Flor de pipa osito poo", price: "Bs. 35", category: "flower", img: "img/peluche9.png", emoji: "🦄" },
-        // Adicional: algunas flores (para completar categoría)
-        { id: 10, name: "Puerquito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche10.png", emoji: "🌹" },
-        { id: 11, name: "Panda", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche11.png", emoji: "🌹" }
+        { id: 1, name: "Ternura", desc: "Peluche Tierno que conquista de 15cm, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche1.png" },
+        { id: 2, name: "Rosa", desc: "Peluche rosa suave, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche2.png" },
+        { id: 3, name: "Osito", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche3.png" },
+        { id: 4, name: "Osito Miel", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche4.png" },
+        { id: 5, name: "Perrito Nube", desc: "Peluche suave, con flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche5.png" },
+        { id: 6, name: "Osito Corazón", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche6.png" },
+        { id: 7, name: "Lobito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche7.png" },
+        { id: 8, name: "Lotso", desc: "Flor de pipa lotso el oso", price: "Bs. 35", category: "flower", img: "img/peluche8.png" },
+        { id: 9, name: "Poo", desc: "Flor de pipa osito poo", price: "Bs. 35", category: "flower", img: "img/peluche9.png" },
+        { id: 10, name: "Puerquito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche10.png" },
+        { id: 11, name: "Panda", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche11.png" },
+		{ id: 12, name: "Oso Pooh", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche12.png" },
+		{ id: 13, name: "Conejito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche13.png" },
+		{ id: 14, name: "Oso Marron", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche14.png" },
+		{ id: 15, name: "Oso Celeste", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche15.png" },		
+		{ id: 16, name: "Perrito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche16.png" },
+		{ id: 17, name: "Patito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 100", category: "flower", img: "img/peluche17.png" },
+		{ id: 18, name: "Lotso", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche18.png" },
+		{ id: 19, name: "Osito Flor", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche19.png" },
+		{ id: 20, name: "Lobito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "flower", img: "img/peluche20.png" },
+		{ id: 21, name: "Unicornio", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche21.png" },
+		{ id: 22, name: "Osito Ternura", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche22.png" },
+		{ id: 23, name: "Osito Polar", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche23.png" },
+		{ id: 24, name: "Oso Tres", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche24.png" },
+		{ id: 25, name: "Unicornio Dos", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche25.png" },
+		{ id: 27, name: "Conejito Tierno", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 90", category: "flower", img: "img/peluche27.png" },
+		{ id: 28, name: "Perrita Tierna", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche28.png" },
+		{ id: 29, name: "Panda Lila", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche29.png" },
+		{ id: 30, name: "Osito Grande", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "flower", img: "img/peluche30.png" },
     ];
 
     const gridContainer = document.getElementById('catalog-grid');
     let activeFilter = 'all';
+
+    // Funciones del Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(imageUrl, productName) {
+        lightboxImg.src = imageUrl;
+        lightboxCaption.textContent = productName;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Evita scroll detrás del modal
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restaura scroll
+    }
+
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
 
     function renderCatalog(filter = 'all') {
         let filtered = filter === 'all' ? [...products] : products.filter(p => p.category === filter);
@@ -381,7 +500,8 @@
         for (let product of filtered) {
             html += `
                 <div class="card" data-id="${product.id}">
-                    <div class="card-img" style="background-image: url('${product.img}'); background-size: cover; background-position: center;">
+                    <div class="card-img" style="background-image: url('${product.img}'); background-size: cover; background-position: center;" 
+                         onclick="openLightbox('${product.img}', '${product.name.replace(/'/g, "\\'")} - ${product.price}')">
                     </div>
                     <div class="card-content">
                         <div class="card-title">${product.name} - ${product.price}</div>
@@ -408,7 +528,7 @@
     // Inicializar
     renderCatalog('all');
 
-    // Animación escalonada de tarjetas
+    // Animación escalonada
     const styleAnim = document.createElement('style');
     styleAnim.textContent = `
         .card {
@@ -431,7 +551,7 @@
     observer.observe(gridContainer, { childList: true, subtree: false });
     applyCardDelay();
 
-    console.log("%c🌿 De Mil Amores · Tarjetas rediseñadas: imagen rectangular y contenido compacto 🌿", "color: #2A5C4A; font-size: 13px; font-weight: bold;");
+    console.log("%c🌿 Detalles Rossy · Previsualización de imágenes activada 🌿", "color: #2A5C4A; font-size: 13px; font-weight: bold;");
 </script>
 </body>
 </html>
