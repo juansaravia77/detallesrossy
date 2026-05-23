@@ -1,635 +1,422 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Detalles Rossy - Flores y Peluches</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F9F6F0;
-            color: #2C2A29;
-            scroll-behavior: smooth;
-        }
-        /* PALETA VERDE ELEGANTE */
-        :root {
-            --green-deep: #2A5C4A;
-            --green-moss: #417B5E;
-            --gold-accent: #C6A15B;
-            --gold-soft: #D9B87A;
-            --sand-light: #F0EBE1;
-            --cream-pure: #FEFCF8;
-            --charcoal-soft: #3B3A38;
-            --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.03), 0 2px 5px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
-            --sold-bg: #B23A3A;
-            --sold-text: #FFFFFF;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalles Rossy – Catálogo Día de la Madre</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f1;
+    --blush: #f5e6e0;
+    --rose: #c0392b;
+    --rose-dark: #8b1a1a;
+    --rose-light: #e8a0a0;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --text-dark: #2c1810;
+    --text-mid: #5a3030;
+    --text-light: #9a7070;
+    --white: #ffffff;
+    --wa: #25D366;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--text-dark); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
 
-        /* BANNER PRINCIPAL */
-        .banner-container {
-            width: 100%;
-            background: #FDF9F2;
-        }
-        .main-banner {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-            max-height: 480px;
-        }
-        @media (max-width: 768px) {
-            .main-banner {
-                max-height: 320px;
-                object-fit: cover;
-            }
-        }
-        /* Botones de categoría */
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin: 2rem 1rem 1.8rem 1rem;
-        }
-        .cat-btn {
-            background: white;
-            border: 1px solid #DCCFBF;
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 0.85rem;
-            color: #5B5447;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
-        }
+  body::before {
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(ellipse 60% 40% at 0% 0%, rgba(192,57,43,.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 100% 100%, rgba(192,57,43,.09) 0%, transparent 55%);
+  }
 
-        .cat-btn i {
-            margin-right: 0.5rem;
-            color: var(--gold-accent);
-        }
+  /* ── HEADER CON IMAGEN DE FONDO ── */
+  header {
+    position:relative; z-index:10;
+    color:var(--white); text-align:center; overflow:hidden;
+    /* Imagen de fondo */
+    background-image: url('img/banner.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Overlay oscuro para mejorar legibilidad del texto */
+  header::before {
+    content:''; position:absolute; inset:0;
+    z-index:1;
+  }
+  
+  /* Patrón decorativo sutil */
+  header::after {
+    content:''; position:absolute; inset:0; opacity:.15; z-index:1;
+  }
+  
+  .header-inner { 
+    position:relative; z-index:10; 
+    padding: 48px 24px 56px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .logo-ring {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:80px; height:80px; border:2px solid rgba(255,255,255,.7);
+    border-radius:50%; margin-bottom:16px; position:relative;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(4px);
+  }
+  .logo-ring::before { content:''; position:absolute; inset:6px; border:1px solid rgba(255,255,255,.4); border-radius:50%; }
+  .logo-r { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--white); }
+  .brand-name { font-family:'Playfair Display',serif; font-size:clamp(32px,8vw,56px); font-weight:700; line-height:1.1; margin-bottom:4px; }
+  .brand-sub { font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; opacity:.9; margin-bottom:24px; }
+  .header-divider { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:20px; }
+  .header-divider span { opacity:.8; font-size:10px; letter-spacing:3px; }
+  .header-divider::before,.header-divider::after { content:''; height:1px; width:60px; background:rgba(255,255,255,.5); }
+  .catalog-title { font-family:'Cormorant Garamond',serif; font-size:clamp(14px,3.5vw,18px); font-weight:300; font-style:italic; opacity:.95; margin-bottom:32px; }
+  .header-badges { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+  .badge { display:flex; flex-direction:column; align-items:center; gap:6px; background:rgba(0,0,0,0.25); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.3); border-radius:12px; padding:12px 16px; min-width:90px; }
+  .badge-icon { font-size:20px; }
+  .badge-label { font-size:9px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; opacity:.9; text-align:center; line-height:1.3; }
+  
+  /* Ola decorativa debajo del header */
+  .wave { display:block; width:100%; height:60px; margin-top:-2px; position:relative; z-index:2; }
 
-        .cat-btn.active {
-            background: var(--green-deep);
-            border-color: var(--green-deep);
-            color: white;
-        }
+  /* ── TAGLINE ── */
+  .tagline-section { position:relative; z-index:1; text-align:center; padding:48px 24px 36px; }
+  .tagline { font-family:'Playfair Display',serif; font-size:clamp(20px,5vw,32px); font-style:italic; color:var(--rose-dark); line-height:1.4; max-width:500px; margin:0 auto 12px; }
+  .tagline-sub { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--text-light); }
 
-        .cat-btn.active i {
-            color: white;
-        }
+  /* ── SECTION ── */
+  .catalog-section { position:relative; z-index:1; padding:0 16px 64px; max-width:1100px; margin:0 auto; }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(22px,4vw,30px); color:var(--rose-dark); text-align:center; margin-bottom:8px; }
+  .section-line { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:36px; }
+  .section-line::before,.section-line::after { content:''; height:1px; width:80px; background:linear-gradient(90deg,transparent,var(--rose-light)); }
+  .section-line::after { background:linear-gradient(90deg,var(--rose-light),transparent); }
+  .section-line span { color:var(--rose); font-size:16px; }
 
-        .cat-btn:hover:not(.active) {
-            background: #F6F0E8;
-            border-color: #CBBFAE;
-        }
+  /* ── GRID ── */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; }
 
-        /* Catálogo grilla */
-        .catalog {
-            max-width: 1300px;
-            margin: 1rem auto 3rem;
-            padding: 0 1.5rem;
-        }
+  /* ── CARD ── */
+  .card {
+    background:var(--white); border-radius:20px; overflow:hidden;
+    box-shadow:0 4px 20px rgba(139,26,26,.08);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+    position:relative;
+  }
+  .card:hover { transform:translateY(-8px) scale(1.01); box-shadow:0 16px 48px rgba(139,26,26,.18); }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
+  /* ── IMAGE AREA ── */
+  .card-img-wrap {
+    position:relative; height:300px; overflow:hidden;
+    background:linear-gradient(135deg,var(--blush),var(--cream));
+  }
+  .card-photo {
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .card:hover .card-photo { transform:scale(1.07); }
 
-        /* TARJETAS */
-        .card {
-            background: var(--cream-pure);
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.25s ease, box-shadow 0.3s ease;
-            border: 1px solid #EBE3D8;
-            display: flex;
-            flex-direction: column;
-        }
+  .card-number {
+    position:absolute; top:12px; left:12px; width:36px; height:36px;
+    background:var(--rose); color:var(--white); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700; font-family:'Playfair Display',serif;
+    box-shadow:0 2px 8px rgba(0,0,0,.2); z-index:5;
+  }
+  .card-fav {
+    position:absolute; top:12px; right:12px; width:36px; height:36px;
+    background:rgba(255,255,255,.85); backdrop-filter:blur(4px);
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:16px; cursor:pointer; transition:transform .2s; border:none; outline:none; z-index:5;
+  }
+  .card-fav:hover { transform:scale(1.2); }
+  .card-fav.active { background:var(--rose); }
+  .card-fav.active::after { content:'♥'; color:white; font-size:16px; }
+  .card-fav::after { content:'♡'; }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: #DFD2C2;
-        }
+  .card-body { padding:18px 18px 20px; }
+  .card-name { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--rose-dark); margin-bottom:6px; }
+  .card-desc { font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--text-mid); line-height:1.6; margin-bottom:16px; }
+  .card-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .card-price { display:flex; flex-direction:column; line-height:1; }
+  .card-price .amount { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--rose); }
+  .card-price .currency { font-size:10px; font-weight:600; letter-spacing:2px; color:var(--text-light); margin-top:2px; }
 
-        /* Contenedor de imagen con posición relativa para la etiqueta sold */
-        .card-img-wrapper {
-            position: relative;
-            overflow: hidden;
-        }
+  /* ── ORDER BUTTON → WhatsApp ── */
+  .btn-order {
+    flex:1; background:linear-gradient(135deg,#1a7a3a,var(--wa));
+    color:var(--white); border:none; border-radius:50px;
+    padding:10px 18px; font-family:'Montserrat',sans-serif;
+    font-size:11px; font-weight:700; letter-spacing:.8px;
+    text-transform:uppercase; cursor:pointer;
+    transition:all .25s ease; box-shadow:0 4px 12px rgba(37,211,102,.35);
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    text-decoration:none;
+  }
+  .btn-order:hover { background:linear-gradient(135deg,#146030,#1ebe5d); transform:translateY(-1px); box-shadow:0 6px 18px rgba(37,211,102,.45); }
 
-        .card-img {
-            height: 320px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            transition: opacity 0.2s ease;
-        }
+  /* ── WA FLOAT ── */
+  .wa-float { position:fixed; bottom:24px; right:20px; z-index:100; display:flex; align-items:center; gap:10px; animation:float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+  .wa-bubble { background:var(--white); border-radius:20px 20px 4px 20px; padding:8px 14px; font-size:12px; font-weight:600; color:var(--rose-dark); box-shadow:0 4px 16px rgba(0,0,0,.15); white-space:nowrap; display:none; }
+  .wa-float:hover .wa-bubble { display:block; }
+  .wa-btn { width:56px; height:56px; background:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; box-shadow:0 6px 20px rgba(37,211,102,.4); text-decoration:none; border:none; cursor:pointer; transition:transform .25s; }
+  .wa-btn:hover { transform:scale(1.1); }
 
-        .card-img:hover {
-            opacity: 0.92;
-        }
+  /* ── BANNER PROMOCIONAL ── */
+  .promo-banner {
+    position:relative; z-index:1; margin:0 16px 48px;
+    background:linear-gradient(135deg,var(--rose-dark),#a52020);
+    border-radius:24px; padding:32px 28px; text-align:center; color:var(--white);
+    overflow:hidden; max-width:1068px; margin-left:auto; margin-right:auto; margin-bottom:48px;
+  }
+  .promo-banner::before { content:'🌹'; position:absolute; font-size:120px; opacity:.06; top:-20px; left:-20px; }
+  .promo-banner::after  { content:'🌹'; position:absolute; font-size:120px; opacity:.06; bottom:-20px; right:-20px; }
+  .promo-banner h3 { font-family:'Playfair Display',serif; font-size:clamp(18px,4vw,26px); font-style:italic; margin-bottom:8px; }
+  .promo-banner p  { font-size:13px; opacity:.85; margin-bottom:20px; }
+  .banner-btn { display:inline-block; background:var(--white); color:var(--rose-dark); border-radius:50px; padding:12px 28px; font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border:none; transition:all .25s; }
+  .banner-btn:hover { background:var(--gold-light); color:var(--white); transform:translateY(-2px); }
 
-        /* Indicador de lupa */
-        .card-img-wrapper .zoom-icon {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            pointer-events: none;
-        }
+  /* ── FOOTER ── */
+  footer { position:relative; z-index:1; background:var(--rose-dark); color:rgba(255,255,255,.8); text-align:center; padding:40px 24px; }
+  footer .footer-logo { font-family:'Playfair Display',serif; font-size:26px; color:var(--white); margin-bottom:8px; }
+  footer .footer-tagline { font-size:11px; letter-spacing:3px; text-transform:uppercase; opacity:.6; margin-bottom:20px; }
+  footer .footer-copy { font-size:11px; opacity:.5; margin-top:20px; }
 
-        .card-img-wrapper:hover .zoom-icon {
-            opacity: 1;
-        }
+  /* ── MODAL ── */
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(44,24,16,.6); backdrop-filter:blur(6px); z-index:200; align-items:center; justify-content:center; padding:16px; }
+  .modal-overlay.open { display:flex; }
+  .modal { background:var(--white); border-radius:24px; max-width:420px; width:100%; overflow:hidden; animation:slideUp .35s cubic-bezier(.34,1.56,.64,1); position:relative; }
+  @keyframes slideUp { from{transform:translateY(40px);opacity:0} to{transform:translateY(0);opacity:1} }
+  .modal-img { height:400px; background:var(--blush); display:flex; align-items:center; justify-content:center; font-size:90px; position:relative; overflow:hidden; }
+  .modal-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .modal-close { position:absolute; top:12px; right:12px; width:36px; height:36px; background:rgba(255,255,255,.9); border:none; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; transition:transform .2s; }
+  .modal-close:hover { transform:rotate(90deg); }
+  .modal-body { padding:24px; }
+  .modal-num  { font-size:11px; letter-spacing:2px; color:var(--text-light); margin-bottom:4px; }
+  .modal-name { font-family:'Playfair Display',serif; font-size:22px; color:var(--rose-dark); margin-bottom:8px; }
+  .modal-desc { font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--text-mid); line-height:1.7; margin-bottom:20px; }
+  .modal-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .modal-price { font-family:'Playfair Display',serif; font-size:28px; color:var(--rose); }
+  .modal-currency { font-size:11px; letter-spacing:2px; color:var(--text-light); }
+  .btn-wa-modal {
+    flex:1; background:linear-gradient(135deg,#1a7a3a,var(--wa)); color:var(--white);
+    border:none; border-radius:50px; padding:13px 20px; font-size:13px; font-weight:700;
+    cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center;
+    gap:8px; text-decoration:none;
+  }
+  .btn-wa-modal:hover { background:linear-gradient(135deg,#146030,#1ebe5d); transform:translateY(-1px); }
 
-        /* ETIQUETA DE VENDIDO */
-        .sold-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--sold-bg);
-            color: var(--sold-text);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            backdrop-filter: blur(2px);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+  /* ── REVEAL ── */
+  .reveal { opacity:0; transform:translateY(30px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
 
-        .sold-badge i {
-            font-size: 1rem;
-        }
-
-        /* Efecto de opacidad en la imagen para productos vendidos */
-        .card-img.sold {
-            opacity: 0.85;
-        }
-
-        .card-content {
-            padding: 0.85rem 1rem 1rem 1rem;
-            border-top: 1px solid #F0E8DF;
-            background: white;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
-            color: #2D3A2F;
-            margin-bottom: 0.25rem;
-            line-height: 1.3;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        /* Pequeña etiqueta de vendido en el título (versión móvil alternativa) */
-        .title-sold-badge {
-            background: var(--sold-bg);
-            color: var(--sold-text);
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            text-transform: uppercase;
-        }
-
-        .card-desc {
-            font-size: 0.75rem;
-            color: #7C7669;
-            margin: 0.3rem 0 0.5rem 0;
-            line-height: 1.35;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .price {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--green-deep);
-            margin-top: 0.25rem;
-            display: inline-block;
-            background: #F4EFE7;
-            padding: 0.2rem 0.8rem;
-            border-radius: 40px;
-            letter-spacing: -0.2px;
-        }
-
-        /* LIGHTBOX / MODAL */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .lightbox-img {
-            max-width: 90%;
-            max-height: 85%;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            animation: zoomIn 0.25s ease-out;
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.95);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            background: rgba(0,0,0,0.5);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-close:hover {
-            color: #C6A15B;
-            transform: scale(1.1);
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: white;
-            font-size: 1rem;
-            background: rgba(0,0,0,0.6);
-            padding: 10px;
-            margin: 0 auto;
-            width: fit-content;
-            border-radius: 30px;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Footer */
-        footer {
-            background: #E9E1D6;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-            border-top-left-radius: 1.5rem;
-            border-top-right-radius: 1.5rem;
-            font-size: 0.8rem;
-            color: #5C5547;
-        }
-
-        .heart-icon {
-            color: #b17f4b;
-            display: inline-block;
-            animation: gentlePulse 1.6s infinite;
-        }
-
-        @keyframes gentlePulse {
-            0% { transform: scale(1);}
-            50% { transform: scale(1.08);}
-            100% { transform: scale(1);}
-        }
-
-        /* Toast */
-        .toast-msg {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%) scale(0.95);
-            background: #2C3E2Bdd;
-            backdrop-filter: blur(10px);
-            color: #FEF6E6;
-            padding: 0.7rem 1.6rem;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 0.8rem;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.2s, transform 0.2s;
-            pointer-events: none;
-            white-space: nowrap;
-            font-family: 'Inter', monospace;
-            border: 1px solid #CBAA7A;
-        }
-
-        .toast-msg.show {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
-
-        @media (max-width: 640px) {
-            .grid {
-                gap: 1.2rem;
-            }
-            .card-img {
-                height: 260px;
-            }
-            .toast-msg {
-                white-space: normal;
-                text-align: center;
-                max-width: 85%;
-                font-size: 0.75rem;
-            }
-            .categories {
-                gap: 0.6rem;
-            }
-            .cat-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.75rem;
-            }
-            .card-content {
-                padding: 0.7rem 0.9rem 0.9rem 0.9rem;
-            }
-            .card-title {
-                font-size: 1rem;
-            }
-            .price {
-                font-size: 1rem;
-                padding: 0.15rem 0.7rem;
-            }
-            .lightbox-close {
-                top: 10px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 30px;
-            }
-            .lightbox-caption {
-                font-size: 0.8rem;
-                bottom: 15px;
-            }
-            .sold-badge {
-                padding: 0.5rem 0.8rem;
-                font-size: 1rem;
-                top: 8px;
-                right: 8px;
-            }
-        }
-
-        @media (min-width: 1400px) {
-            .card-img {
-                height: 360px;
-            }
-        }
-
-        .floral-bg {
-            background-image: radial-gradient(#DCCFBF 0.8px, transparent 0.8px);
-            background-size: 22px 22px;
-        }
-    </style>
+  /* ── RESPONSIVE ── */
+  @media (max-width:640px) {
+    .grid{grid-template-columns:1fr}
+    .header-badges{gap:10px}
+    .badge{padding:10px 12px;min-width:80px}
+    header { min-height: 380px; }
+    .header-inner { padding: 32px 20px 40px; }
+  }
+  @media (min-width:641px) and (max-width:900px) { .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (min-width:901px) { .grid{grid-template-columns:repeat(3,1fr)} }
+</style>
 </head>
 <body>
 
-<!-- BANNER PRINCIPAL -->
-<div class="banner-container">
-    <img class="main-banner" src="img/banner.png" alt="Detalles Rossy - Te Amo Mamá" loading="eager">
-</div>
+<!-- HEADER CON IMAGEN DE FONDO -->
+<header>
+  <div class="header-inner">
+    <div class="logo-ring"><span class="logo-r">R</span></div>
+    <h1 class="brand-name">Detalles Rossy</h1>
+    <p class="brand-sub"> - </p>
+    <div class="header-divider"><span>✦ CATÁLOGO ✦</span></div>
+    <p class="catalog-title">«Cada detalle, un abrazo que perdura»</p>
+    <div class="header-badges">
+      <div class="badge"><span class="badge-icon">🏅</span><span class="badge-label">Productos de Calidad</span></div>
+      <div class="badge"><span class="badge-icon">🎁</span><span class="badge-label">Detalles Únicos</span></div>
+      <div class="badge"><span class="badge-icon">🚚</span><span class="badge-label">Envíos Seguros</span></div>
+    </div>
+  </div>
+</header>
 
-<!-- Filtros -->
-<div class="categories">
-    <button class="cat-btn active" data-filter="all"><i class="fas fa-seedling"></i> Todos</button>
-    <button class="cat-btn" data-filter="flower"><i class="fas fa-flower"></i> Ramos de Flores</button>
-    <button class="cat-btn" data-filter="plush"><i class="fas fa-bear"></i> Peluches</button>
-    <button class="cat-btn" data-filter="combo"><i class="fas fa-gift"></i> Combos Especiales</button>
-</div>
+<!-- Ola decorativa -->
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#faf6f1"/>
+</svg>
 
-<!-- Catálogo dinámico -->
-<section class="catalog">
-    <div class="grid" id="catalog-grid"></div>
+<!-- CATALOG -->
+<section class="catalog-section">
+  <h2 class="section-title">Nuestros Arreglos</h2>
+  <div class="section-line"><span>♥</span></div>
+  <div class="grid" id="catalog-grid"></div>
 </section>
 
+<!-- BANNER PROMOCIONAL -->
+<div class="promo-banner reveal">
+  <h3>¿Tienes un arreglo especial en mente?</h3>
+  <p>Creamos arreglos personalizados con tu toque único. ¡Escríbenos y lo hacemos realidad!</p>
+  <button class="banner-btn" onclick="openWA('Hola Detalles Rossy! Me gustaría un arreglo personalizado 🌹')">Pedir Personalizado</button>
+</div>
+
+<!-- FOOTER -->
 <footer>
-    <p>Con <span class="heart-icon">🌿</span> dedicación y calidez • Detalles Rossy para Trinidad</p>
-    <p style="margin-top: 0.5rem; font-size: 0.7rem;">Flores de limpia pipa & peluches suaves | Entrega con amor</p>
+  <p class="footer-logo">Detalles Rossy</p>
+  <p class="footer-tagline">Detalles que enamoran</p>
+  <p>🌹 Hecho con amor para quien nos dio todo 🌹</p>
+  <p class="footer-copy">© 2026 Detalles Rossy – Bolivia · +591 72241627</p>
 </footer>
 
-<div id="toastMsg" class="toast-msg">✨ agregado con cariño a tu lista de deseos ✨</div>
+<!-- WA FLOAT -->
+<div class="wa-float">
+  <span class="wa-bubble">¡Haz tu pedido!</span>
+  <button class="wa-btn" onclick="openWA('Hola! Quiero hacer un pedido de Detalles Rossy 🌹')">💬</button>
+</div>
 
-<!-- LIGHTBOX MODAL -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" class="lightbox-img" alt="Vista ampliada">
-    <div id="lightbox-caption" class="lightbox-caption"></div>
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalClick(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img" id="modal-img">
+      <img id="modal-photo" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <p class="modal-num"  id="modal-num"></p>
+      <h3 class="modal-name" id="modal-name"></h3>
+      <p class="modal-desc"  id="modal-desc"></p>
+      <div class="modal-footer">
+        <div>
+          <div class="modal-price" id="modal-price"></div>
+          <div class="modal-currency">Bs</div>
+        </div>
+        <a class="btn-wa-modal" id="modal-wa" href="#" target="_blank">
+          💬 Pedir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-    // Catálogo de productos
-    // El producto con id 1 (Ternura) tiene la propiedad "sold: true"
-    const products = [
-	{ id: 1, name: "Ternura", desc: "Peluche Tierno que conquista de 15cm, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche1.png", sold: false },
-        { id: 2, name: "Rosa", desc: "Peluche rosa suave, con flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche2.png", sold: true },
-        { id: 3, name: "Osito", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche3.png", sold: false },
-        { id: 4, name: "Osito Miel", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche4.png", sold: false },
-        { id: 5, name: "Perrito Nube", desc: "Peluche suave, con flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche5.png", sold: false },
-        { id: 6, name: "Osito Corazón", desc: "Peluche suave, con corazón y flores de limpia pipa.", price: "Bs. 120", category: "plush", img: "img/peluche6.png", sold: false },
-        { id: 7, name: "Lobito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche7.png", sold: false },
-        { id: 8, name: "Lotso", desc: "Flor de pipa lotso el oso", price: "Bs. 35", category: "flower", img: "img/peluche8.png", sold: true },
-        { id: 9, name: "Poo", desc: "Flor de pipa osito poo", price: "Bs. 35", category: "flower", img: "img/peluche9.png", sold: true },
-        { id: 10, name: "Puerquito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "combo", img: "img/peluche10.png", sold: false },
-        { id: 11, name: "Panda", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche11.png", sold: false },
-		{ id: 12, name: "Oso Pooh", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche12.png", sold: false },
-		{ id: 13, name: "Conejito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche13.png", sold: false },
-		{ id: 14, name: "Oso Marron", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche14.png", sold: false },
-		{ id: 15, name: "Oso Celeste", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche15.png", sold: false },		
-		{ id: 16, name: "Perrito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche16.png", sold: false },
-		{ id: 17, name: "Patito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 100", category: "flower", img: "img/peluche17.png", sold: false },
-		{ id: 18, name: "Lotso", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche18.png", sold: false },
-		{ id: 19, name: "Osito Flor", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche19.png", sold: false },
-		{ id: 20, name: "Lobito", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "flower", img: "img/peluche20.png", sold: false },
-		{ id: 21, name: "Unicornio", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche21.png", sold: false },
-		{ id: 22, name: "Osito Ternura", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 120", category: "flower", img: "img/peluche22.png", sold: false },
-		{ id: 23, name: "Osito Polar", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche23.png", sold: false },
-		{ id: 24, name: "Oso Tres", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 25", category: "flower", img: "img/peluche24.png", sold: false },
-		{ id: 25, name: "Unicornio Dos", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche25.png", sold: false },
-		{ id: 27, name: "Conejito Tierno", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 90", category: "flower", img: "img/peluche27.png", sold: false },
-		{ id: 28, name: "Perrita Tierna", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "flower", img: "img/peluche28.png", sold: false },
-		{ id: 29, name: "Panda Lila", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 80", category: "plush", img: "img/peluche29.png", sold: false },
-		{ id: 30, name: "Osito Grande", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "plush", img: "img/peluche30.png", sold: false },
-		{ id: 31, name: "Osito Love", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "plush", img: "img/peluche31.png", sold: false },
-		{ id: 32, name: "Osito Blanco", desc: "Peluche suave y flores de limpia pipa.", price: "Bs. 150", category: "plush", img: "img/peluche32.png", sold: false }
-    ];
+const WA = '59172241627';
 
-    const gridContainer = document.getElementById('catalog-grid');
-    let activeFilter = 'all';
+// Productos actualizados con imágenes locales
+const products = [
+  { id:'01', name:'Osito Blanco', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs 99', emoji:'🌹', img:'img/Grande1.png' },
+  { id:'02', name:'Osito Blanco 2', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 99', emoji:'🌸', img:'img/Grande2.png' },
+  { id:'03', name:'Perrita Blanca', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 99', emoji:'🎈', img:'img/Grande3.png' },
+  { id:'04', name:'Osito Blanco 3', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 99', emoji:'🐻', img:'img/Grande4.png' },
+  { id:'05', name:'Puerquito Rosa', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 99', emoji:'🐰', img:'img/Grande5.png' },
+  { id:'06', name:'Lobito', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 129', emoji:'🌺', img:'img/Grande6.png' },
+  { id:'07', name:'Panda Tierno', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 129', emoji:'💝', img:'img/Grande7.png' },
+  { id:'08', name:'Osito Tierno', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 99', emoji:'🌷', img:'img/Grande8.png' },
+  { id:'09', name:'Osito Corazon Rosa', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 129', emoji:'💖', img:'img/Grande9.png' },
+  { id:'10', name:'Osito Corazon Rojo', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 129', emoji:'💖', img:'img/Grande10.png' },
+  { id:'11', name:'Osito Grande', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 129', emoji:'💖', img:'img/Grande11.png' },
+  { id:'12', name:'Perrita Ojitos', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano1.png' },
+  { id:'13', name:'Osito Rosa', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano2.png' },
+  { id:'14', name:'Unicornio', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano3.png' },
+  { id:'15', name:'Perrito', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano4.png' },
+  { id:'16', name:'Patito', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano5.png' },
+  { id:'17', name:'Osito polar', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano6.png' },
+  { id:'18', name:'Conejito', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano7.png' },
+  { id:'19', name:'Perrita', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano8.png' },
+  { id:'20', name:'Osito Panda', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 69', emoji:'💖', img:'img/Mediano9.png' },
+  { id:'21', name:'Conejito', desc:'Peluche suave, con corazón y flores eternas.', price:'Bs. 60', emoji:'💖', img:'img/Mediano10.png' },
+  { id:'22', name:'Flor Osito1', desc:'flor eterna con osito.', price:'Bs. 25', emoji:'💖', img:'img/Ramo1.png' },
+  { id:'23', name:'Flor Osito2', desc:'flor eterna con osito.', price:'Bs. 25', emoji:'💖', img:'img/Ramo2.png' },
+  { id:'24', name:'Flor Osito3', desc:'flor eterna con osito.', price:'Bs. 25', emoji:'💖', img:'img/Ramo3.png' },
+  { id:'25', name:'Flor Osito4', desc:'flor eterna con osito.', price:'Bs. 25', emoji:'💖', img:'img/Ramo4.png' },
+  { id:'26', name:'Flor Osito5', desc:'flor eterna con osito.', price:'Bs. 25', emoji:'💖', img:'img/Ramo5.png' },
+  { id:'27', name:'Flor Osito6', desc:'flor eterna con osito.', price:'Bs. 25', emoji:'💖', img:'img/Ramo6.png' },
+];
 
-    // Lightbox functions
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
+let currentIdx = null;
 
-    function openLightbox(imageUrl, productName) {
-        lightboxImg.src = imageUrl;
-        lightboxCaption.textContent = productName;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+function openWA(msg) {
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+}
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+function orderViaWA(idx, e) {
+  e.stopPropagation();
+  const p = products[idx];
+  const msg = `Hola Detalles Rossy! 🌹\nMe gustaría ordenar el arreglo *${p.name}* (${p.price} BOB).\n¿Tienen disponibilidad?`;
+  openWA(msg);
+}
 
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
-        }
-    });
+// Build cards
+const grid = document.getElementById('catalog-grid');
+products.forEach((p, i) => {
+  const card = document.createElement('div');
+  card.className = 'card reveal';
+  card.style.transitionDelay = (i * 70) + 'ms';
+  card.innerHTML = `
+    <div class="card-img-wrap">
+      <img class="card-photo" src="${p.img}" alt="${p.name}" loading="lazy">
+      <span class="card-number">${p.id}</span>
+      <button class="card-fav" onclick="toggleFav(this,event)" title="Favorito"></button>
+    </div>
+    <div class="card-body">
+      <h3 class="card-name">${p.name}</h3>
+      <p class="card-desc">${p.desc}</p>
+      <div class="card-footer">
+        <div class="card-price">
+          <span class="amount">${p.price}</span>
+          <span class="currency">BOB</span>
+        </div>
+        <a class="btn-order" href="#" onclick="orderViaWA(${i},event)">
+          💬 Ordenar
+        </a>
+      </div>
+    </div>
+  `;
+  card.addEventListener('click', e => {
+    if (!e.target.closest('a') && !e.target.closest('button')) openModal(i);
+  });
+  grid.appendChild(card);
+});
 
-    function renderCatalog(filter = 'all') {
-        let filtered = filter === 'all' ? [...products] : products.filter(p => p.category === filter);
+function toggleFav(btn, e) {
+  e.stopPropagation();
+  btn.classList.toggle('active');
+}
 
-        if (filtered.length === 0) {
-            gridContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2.5rem; background:#F4EFE7; border-radius:2rem;"><i class="fas fa-heart-broken" style="font-size:2.2rem; color:#B28B60;"></i><p style="margin-top:1rem;">Muy pronto nuevos regalos llenos de ternura 💚</p></div>`;
-            return;
-        }
+function openModal(idx) {
+  currentIdx = idx;
+  const p = products[idx];
+  document.getElementById('modal-num').textContent   = `ARREGLO ${p.id}`;
+  document.getElementById('modal-name').textContent  = p.name;
+  document.getElementById('modal-desc').textContent  = p.desc;
+  document.getElementById('modal-price').textContent = p.price;
+  document.getElementById('modal-photo').src         = p.img;
+  const msg = `Hola Detalles Rossy! 🌹\nMe gustaría ordenar el arreglo *${p.name}* (${p.price} BOB).\n¿Tienen disponibilidad?`;
+  document.getElementById('modal-wa').href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-        let html = '';
-        for (let product of filtered) {
-            // Determinar si el producto está vendido
-            const isSold = product.sold === true;
-            const soldClass = isSold ? 'sold' : '';
-            const soldBadge = isSold ? `
-                <div class="sold-badge">
-                    <i class="fas fa-check-circle"></i> VENDIDO
-                </div>
-            ` : '';
-            
-            // Pequeña etiqueta en el título para móviles o refuerzo visual
-            const titleSoldBadge = isSold ? `<span class="title-sold-badge"><i class="fas fa-check-circle"></i> Vendido</span>` : '';
-            
-            // Para el lightbox, mostramos el nombre + precio + indicación de vendido si aplica
-            const lightboxTitle = isSold ? `${product.name} - ${product.price} (VENDIDO)` : `${product.name} - ${product.price}`;
-            
-            html += `
-                <div class="card" data-id="${product.id}">
-                    <div class="card-img-wrapper">
-                        <div class="card-img ${soldClass}" style="background-image: url('${product.img}'); background-size: cover; background-position: center;" 
-                             onclick="openLightbox('${product.img}', '${lightboxTitle.replace(/'/g, "\\'")}')">
-                        </div>
-                        <div class="zoom-icon">🔍</div>
-                        ${soldBadge}
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">
-                            ${product.name} - ${product.price}
-                            ${titleSoldBadge}
-                        </div>
-                        <div class="card-desc">${product.desc}</div>
-                    </div>
-                </div>
-            `;
-        }
-        gridContainer.innerHTML = html;
-    }
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalClick(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
 
-    // Filtros
-    const filterBtns = document.querySelectorAll('.cat-btn');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filterValue = btn.getAttribute('data-filter');
-            activeFilter = filterValue;
-            filterBtns.forEach(bt => bt.classList.remove('active'));
-            btn.classList.add('active');
-            renderCatalog(activeFilter);
-        });
-    });
-
-    // Inicializar
-    renderCatalog('all');
-
-    // Animación escalonada
-    const styleAnim = document.createElement('style');
-    styleAnim.textContent = `
-        .card {
-            animation: softRise 0.4s ease-out backwards;
-            animation-delay: calc(0.02s * var(--order, 0));
-        }
-        @keyframes softRise {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    `;
-    document.head.appendChild(styleAnim);
-    
-    function applyCardDelay() {
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, idx) => card.style.setProperty('--order', idx));
-    }
-    
-    const observer = new MutationObserver(() => applyCardDelay());
-    observer.observe(gridContainer, { childList: true, subtree: false });
-    applyCardDelay();
-
-    console.log("%c🌿 Detalles Rossy · Etiqueta VENDIDO añadida al producto Ternura 🌿", "color: #2A5C4A; font-size: 13px; font-weight: bold;");
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
